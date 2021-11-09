@@ -7,13 +7,73 @@
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"> 
+
         {% endblock %}
+        <style>
+        .hackathon {width: 25%; length:25%}
+        .connexion {margin-left: 200%}
+        
+        </style>
 
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
+        <!--
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{{path('home')}}"><img class="hackathon" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Hackathon_logo.jpg"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Les Hackathons</a>          
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">À propos des hackathons</a>
+        </li>
+        <div class="connexion">
+        <li class="nav-item">
+        <a href=""><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Se connecter </button></a>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</nav>-->
     </head>
     <body>
-        {% block body %}{% endblock %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Hackathon_logo.jpg" width="80" height="80" class="d-inline-block align-text-top">
+    </a>
+  </div>
+</nav>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Les Hackathons</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">À propos des hackathons</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <button class="btn btn-primary" type="submit">Se connecter</button>
+      </form>
+    </div>
+  </div>
+</nav>
+        {% block body %}
+        
+        {% endblock %}
     </body>
 </html>
