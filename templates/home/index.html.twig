@@ -1,32 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-
+	.example-wrapper {
+		margin: 1em auto;
+		max-width: 800px;
+		width: 95%;
+		font: 18px / 1.5 sans-serif;
+	}
+	.example-wrapper code {
+		background: #F5F5F5;
+		padding: 2px 6px;
+	}
 </style>
 
-<div class="container-lg"><b> Les news des Hackathons</b>
-<div class="card" style="width: 18rem;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/HackTX_2012_More_Participants.jpg" class="card-img-top" >
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card" style="width: 18rem;">
-  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" class="card-img-top" >
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
+<div class="container-fluid mt-3">
 
+	<div class="row">
+		<div class="col p-3">
+			<h3>Les news des Hackathons !</h3>
+			<div class="card" style="width: 25rem;">
+				<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">Le plus gros Hackathons de 2021</h5>
+					<p class="card-text">Lors de cet événement, l'hackathon au Sables d'Olonne réunit plus de 50 personnes à travers la France</p>
+				</div>
+			</div>
+			<div class="card" style="width: 25rem;">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/3/35/HackTX_2012_More_Participants.jpg" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">Leur projet est incroyable</h5>
+					<p class="card-text">Ces jeunes étudiants ont créé une application de gestion des plus révolutionnaires</p>
+				</div>
+			</div>
+		</div>
 
-{% endblock %}
+		<div class="col p-3">
+			<h3>À venir</h3>
+			<ul class="list-group">
+				<div class="card">
+					<li class="list-group-item">Hackathon 1
+						<img style="width:50%" src="https://images.unsplash.com/photo-1560264280-88b68371db39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"></li>
+
+				</div>
+				<div class="card">
+					<li class="list-group-item">Hackathon 2
+						<img style="width:50%" src="https://images.unsplash.com/photo-1560264280-88b68371db39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"></li>
+				</div>
+				<div class="card">
+					<li class="list-group-item">Hackathon 3
+						<img style="width:50%" src="https://images.unsplash.com/photo-1560264280-88b68371db39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"></li>
+					<div></ul>
+				</div>
+				<div class="col p-3 ">
+					<h3>Contactez-nous</h3>
+					<div class="card" style="width: 40rem;">
+
+						<div class="card-body">
+            <img style="width:70%" src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80" </div><br>
+							<p class="card-text">Partagez-nous votre ressenti et vos demandes à cette adresse mail :</p>
+							<p class="card-text">directeur@hackathon.com</p>
+							 </div> </div> </div> </div> {% endblock %}
