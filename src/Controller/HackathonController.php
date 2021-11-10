@@ -17,9 +17,11 @@ class HackathonController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
         $leHackathon=$repository->find($id);
         
+        
 
         return $this->render('hackathon/index.html.twig', [
             'hackathon' => $leHackathon,
+            
         ]);
     }
 }

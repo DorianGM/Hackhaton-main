@@ -47,4 +47,14 @@ class HackathonRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function parVille(){
+        return $this->createQueryBuilder('h')
+        ->select('DISTINCT h.ville')
+        ->orderBy('h.ville', 'ASC')
+        ->getQuery()
+        
+        ->getResult()
+    ;
+}
 }

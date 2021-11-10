@@ -3,14 +3,17 @@
 {% block title %}Hello HackathonController!{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
+<h1 style="text-align:center"><b>{{hackathon.theme}}</b></h1></br>
+<img style="width:25%;length:25%;text-align:center;display: block;margin-left: auto;margin-right: auto;" src="{{hackathon.image}}"></br>
+<div class="details" style ="text-align:center;display: block;margin-left: auto;margin-right: auto;border: 1px solid black;padding-bottom:10px;padding-top:10px;">
     <h1>Détails du hackathon : </h1>
-   {{hackathon.theme}} </br>
-      Lieu : {{hackathon.lieu}} </br>
-      Date début : {{hackathon.dateDebut|date("d/m/Y")}} </br>
-      <img src="{{hackathon.image}}">
+    </br>
+      Adresse : {{hackathon.lieu}} ({{hackathon.rue}}, {{hackathon.codePostal}} {{hackathon.ville}})</br>
+      Commence le : {{hackathon.dateDebut|date("d/m/Y")}} à {{hackathon.heureDebut|date("H:i")}}</br>
+      Date de fin : {{hackathon.dateFin|date("d/m/Y")}} à {{hackathon.heureFin|date("H:i")}}</br>
+      <b> S'inscrire avant le {{hackathon.dateLimite|date("d/m/Y")}} </b></br>
+      Nombre de places : {{hackathon.nbPlaces}} </br>
 </div>
-
 
 
 {% endblock %}
