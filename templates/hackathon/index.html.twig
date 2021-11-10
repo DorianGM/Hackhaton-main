@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HackathonController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Détails du hackathon : </h1>
+   {{hackathon.theme}} </br>
+      Lieu : {{hackathon.lieu}} </br>
+      Date début : {{hackathon.dateDebut|date("d/m/Y")}} </br>
+      <img src="{{hackathon.image}}">
+</div>
+
+
+
+{% endblock %}
