@@ -40,10 +40,12 @@ class HomeController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
         $hackathon = $repository->parVille2($ville);
+        $lesVilles = $repository->parVille();
 
 
-        return $this->render('home/parville.html.twig', [
-            'hackathon' => $hackathon,
+        return $this->render('home/listhackathons.html.twig', [
+            'hackathons' => $hackathon,
+            'villes' => $lesVilles,
             
         ]);
     }
