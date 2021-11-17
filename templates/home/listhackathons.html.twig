@@ -2,11 +2,27 @@
 {% block body %}
 	<select id="ville" name="ville">
 		<option value="0">Sélectionner une ville</option>
+		{% set myVal = 0 %}
 		{% for laVille in villes %}
-			<option value="1">{{laVille.ville}}</option>
-			{% endfor %}
-		</select>
+		{{ myVal == myVal + 1 }}
+			<option value="{{myVal}}">{{laVille.ville}}</option>
+
+		{% endfor %}
+
+<script type="text/javascript">function onClick(){
 	
+	var liste = document.getElementByName(ville);
+	var texte = liste.options[liste.selectedIndex].text;
+	window.alert('texte');
+}
+	</script>
+	</select>
+	{# {% for laville in ville %}
+			<img src={{laville.image}}>nbnb
+
+		{% endfor %} #}
+	<button class="btn btn-success" onclick="onClick()">Filtrer</button>
+
 	<div class="row row-cols-1 row-cols-md-3 g-4">
 
 		{% for hackathon in hackathons %}

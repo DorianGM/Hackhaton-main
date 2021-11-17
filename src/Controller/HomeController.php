@@ -32,4 +32,19 @@ class HomeController extends AbstractController
             'villes' => $lesVilles,
         ]);
     }
+    /**
+     * @Route("/listhackathons/{ville}", name="laville")
+     */
+    public function triVille($ville): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Hackathon::class);
+        $Ville=$repository->parVille2($ville);
+        
+        
+
+        return $this->render('home/listhackathons.html.twig', [
+            'ville' => $Ville,
+            
+        ]);
+    }
 }

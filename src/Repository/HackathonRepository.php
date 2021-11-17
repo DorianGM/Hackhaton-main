@@ -57,4 +57,15 @@ class HackathonRepository extends ServiceEntityRepository
         ->getResult()
     ;
 }
+
+    public function parVille2($ville){
+        return $this->createQueryBuilder('h')
+        ->andWhere('h.ville = :ville')
+        ->setParameter('ville', $ville)
+        ->orderBy('h.ville', 'ASC')
+        ->getQuery()
+    
+        ->getResult()
+    ;
+}
 }
