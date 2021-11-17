@@ -1,42 +1,34 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-	<select id="ville" name="ville">
-		<option value="0">Sélectionner une ville</option>
-		{% set myVal = 0 %}
-		{% for laVille in villes %}
-		{{ myVal == myVal + 1 }}
-			<option value="{{myVal}}">{{laVille.ville}}</option>
 
-		{% endfor %}
+	<div class="container">
+	<h1>Rechercher par ville : </h1>
+		<div class="row">
+			<ul>
+				{% for laville in villes %}
+					<a href="{{path('laville', {'ville':laville.ville}) }}" class="btn btn-outline-secondary">{{laville.ville}}
+					</a>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
 
-<script type="text/javascript">function onClick(){
-	
-	var liste = document.getElementByName(ville);
-	var texte = liste.options[liste.selectedIndex].text;
-	window.alert('texte');
-}
-	</script>
-	</select>
-	{# {% for laville in ville %}
-			<img src={{laville.image}}>nbnb
+<div class="row row-cols-1 row-cols-md-3 g-4">
 
-		{% endfor %} #}
-	<button class="btn btn-success" onclick="onClick()">Filtrer</button>
-
-	<div class="row row-cols-1 row-cols-md-3 g-4">
-
-		{% for hackathon in hackathons %}
+	{% for hackathon in hackathons %}
 
 
-			<div class="col">
-				<div class="card" style="width: 35rem;">
-					<img src="{{hackathon.image}}" class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">{{hackathon.theme}}</h5>
-						<a href="{{path('details',{'id':hackathon.idH})}}" class="btn btn-outline-success">Détails</a>
-					</div>
+		<div class="col">
+			<div class="card" style="width: 35rem;">
+				<img src="{{hackathon.image}}" class="card-img-top">
+				<div class="card-body">
+					<h5 class="card-title">{{hackathon.theme}}</h5>
+					<a href="{{path('details',{'id':hackathon.idH})}}" class="btn btn-outline-success">Détails</a>
+					{% if hackathon.nbPlaces > 0 %}
+						<a href="#" class="btn btn-outline-info">S'inscrire</a>
+					{% endif %}
 				</div>
 			</div>
-		{% endfor %}
-	</div>
-</div>{% endblock %}
+		</div>
+	{% endfor %}
+</div></div>{% endblock %}

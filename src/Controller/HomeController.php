@@ -23,7 +23,7 @@ class HomeController extends AbstractController
     public function lesHackathons(): Response
     {
         $repository=$this->getDoctrine()->getRepository(Hackathon::class);
-        $lesHackathons = $repository->findAll();
+        $lesHackathons = $repository->parNbPlaces();
         $lesVilles = $repository->parVille();
     
 
@@ -32,18 +32,18 @@ class HomeController extends AbstractController
             'villes' => $lesVilles,
         ]);
     }
+
     /**
-     * @Route("/listhackathons/{ville}", name="laville")
+     * @Route("/listhackathons/ville/{ville}", name="laville")
      */
     public function triVille($ville): Response
     {
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
-        $Ville=$repository->parVille2($ville);
-        
-        
+        $hackathon = $repository->parVille2($ville);
 
-        return $this->render('home/listhackathons.html.twig', [
-            'ville' => $Ville,
+
+        return $this->render('home/parville.html.twig', [
+            'hackathon' => $hackathon,
             
         ]);
     }

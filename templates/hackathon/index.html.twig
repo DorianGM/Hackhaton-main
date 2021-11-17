@@ -10,9 +10,18 @@
     </br>
       Adresse : {{hackathon.lieu}} ({{hackathon.rue}}, {{hackathon.codePostal}} {{hackathon.ville}})</br>
       Commence le : {{hackathon.dateDebut|date("d/m/Y")}} à {{hackathon.heureDebut|date("H:i")}}</br>
-      Date de fin : {{hackathon.dateFin|date("d/m/Y")}} à {{hackathon.heureFin|date("H:i")}}</br>
+      Se termine le : {{hackathon.dateFin|date("d/m/Y")}} à {{hackathon.heureFin|date("H:i")}}</br>
       <b> S'inscrire avant le {{hackathon.dateLimite|date("d/m/Y")}} </b></br>
-      Nombre de places : {{hackathon.nbPlaces}} </br>
+      Nombre de places : 
+      {% if hackathon.nbPlaces <= 10 and hackathon.nbPlaces > 0%}
+						<b style="color:red">{{hackathon.nbPlaces}}</b>
+					{% endif %}
+          {% if hackathon.nbPlaces == 0 %}
+						<b style="color:red">Plus de places disponibles</b>
+					{% endif %}
+          {% if hackathon.nbPlaces > 10 %}
+						<b>{{hackathon.nbPlaces}}</b>
+					{% endif %} </br>
 </div>
 
 

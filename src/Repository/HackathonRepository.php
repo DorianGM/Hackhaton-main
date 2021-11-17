@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Hackathon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Validator\Constraints\All;
 
 /**
  * @method Hackathon|null find($id, $lockMode = null, $lockVersion = null)
@@ -58,6 +59,14 @@ class HackathonRepository extends ServiceEntityRepository
     ;
 }
 
+    public function parNbPlaces(){
+        return $this->createQueryBuilder('h')
+        ->orderBy('h.nbplaces', 'DESC')
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
     public function parVille2($ville){
         return $this->createQueryBuilder('h')
         ->andWhere('h.ville = :ville')
@@ -67,5 +76,5 @@ class HackathonRepository extends ServiceEntityRepository
     
         ->getResult()
     ;
-}
+ }
 }
