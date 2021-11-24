@@ -34,6 +34,7 @@ class ApiController extends AbstractController
                 'dateLimite'=>$unHackathon->getDatelimite(),
                 'nbPlaces'=>$unHackathon->getNbplaces(),
                 'image'=>$unHackathon->getImage(),
+                
             ];
         }
 

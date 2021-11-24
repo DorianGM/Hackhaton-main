@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Hackathon;
 
 /**
  * Inscription
  *
  * @ORM\Table(name="inscription", indexes={@ORM\Index(name="idH", columns={"idHackathon"}), @ORM\Index(name="idP", columns={"idParticipant"})})
- * @ORM\Entity(repositoryClass=App\Repository\InscriptionRepository::class)
+ * @ORM\Entity
  */
 class Inscription
 {
@@ -20,20 +21,6 @@ class Inscription
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idi;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idParticipant", type="integer", nullable=false)
-     */
-    private $idparticipant;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="idHackathon", type="integer", nullable=false)
-     */
-    private $idhackathon;
 
     /**
      * @var \DateTime
@@ -49,33 +36,29 @@ class Inscription
      */
     private $texte;
 
+    /**
+     * @var \Hackathon
+     *
+     * @ORM\ManyToOne(targetEntity="Hackathon")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idHackathon", referencedColumnName="idH")
+     * })
+     */
+    private $idhackathon;
+
+    /**
+     * @var \Participant
+     *
+     * @ORM\ManyToOne(targetEntity="Participant")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idParticipant", referencedColumnName="idP")
+     * })
+     */
+    private $idparticipant;
+
     public function getIdi(): ?int
     {
         return $this->idi;
-    }
-
-    public function getIdparticipant(): ?int
-    {
-        return $this->idparticipant;
-    }
-
-    public function setIdparticipant(int $idparticipant): self
-    {
-        $this->idparticipant = $idparticipant;
-
-        return $this;
-    }
-
-    public function getIdhackathon(): ?int
-    {
-        return $this->idhackathon;
-    }
-
-    public function setIdhackathon(int $idhackathon): self
-    {
-        $this->idhackathon = $idhackathon;
-
-        return $this;
     }
 
     public function getDateinscription(): ?\DateTimeInterface
@@ -98,6 +81,30 @@ class Inscription
     public function setTexte(string $texte): self
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getIdhackathon(): ?Hackathon
+    {
+        return $this->idhackathon;
+    }
+
+    public function setIdhackathon(?Hackathon $idhackathon): self
+    {
+        $this->idhackathon = $idhackathon;
+
+        return $this;
+    }
+
+    public function getIdparticipant(): ?Participant
+    {
+        return $this->idparticipant;
+    }
+
+    public function setIdparticipant(?Participant $idparticipant): self
+    {
+        $this->idparticipant = $idparticipant;
 
         return $this;
     }

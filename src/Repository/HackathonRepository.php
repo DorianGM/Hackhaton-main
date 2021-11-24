@@ -77,4 +77,15 @@ class HackathonRepository extends ServiceEntityRepository
         ->getResult()
     ;
  }
+
+    // public function parType(){
+    //     return $this->createQueryBuilder('h')
+    //     ->andWhere('h.type = initiation')
+    //     ->orderBy('h.type', 'ASC')
+    //     ->getQuery()
+    
+    //     ->getResult()
+    // ;
+    // }
+
 }
