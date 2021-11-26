@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\Hackathon;
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Evenement
@@ -57,7 +58,7 @@ class Evenement
     private $sallee;
 
     /**
-     * @var \Hackathon
+     * @var Hackathon
      *
      * @ORM\ManyToOne(targetEntity="Hackathon")
      * @ORM\JoinColumns({
@@ -65,6 +66,7 @@ class Evenement
      * })
      */
     private $idhackat;
+
 
     public function getIdevent(): ?int
     {
@@ -131,6 +133,7 @@ class Evenement
         return $this;
     }
 
+    
     public function getIdhackat(): ?Hackathon
     {
         return $this->idhackat;
