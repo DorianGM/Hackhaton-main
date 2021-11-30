@@ -11,13 +11,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ApiEvenementController extends AbstractController
 {
     /**
-     * @Route("/api/evenements", name="apiEvenement", methods="GET")
+     * @Route("/api/evenements/{type}", name="apiEvenement", methods="GET")
      */
-    public function index(): JsonResponse
+    public function index($type): JsonResponse
     {
         $repository=$this->getDoctrine()->getRepository(Evenement::class);
-
-        $lesEvenements= $repository->findAll();
+        $lesEvenements= $repository->findByType($type);
         $tabJSON=[];
         foreach ($lesEvenements as $unEvenement){
             $tabJSON[] = [
