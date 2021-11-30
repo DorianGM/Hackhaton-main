@@ -3,13 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Evenement;
 
 /**
  * Hackathon
  *
  * @ORM\Table(name="hackathon")
- * @ORM\Entity(repositoryClass=App\Repository\HackathonRepository::class)
+ * @ORM\Entity
  */
 class Hackathon
 {
@@ -19,9 +18,7 @@ class Hackathon
      * @ORM\Column(name="idH", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @OneToMany(targetEntity="idHackat", mappedBy="evenement")
      */
-     
     private $idh;
 
     /**

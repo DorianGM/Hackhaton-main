@@ -1,14 +1,13 @@
 <?php
 
 namespace App\Entity;
-use App\Entity\Hackathon;
-use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Evenement
  *
- * @ORM\Table(name="evenement", indexes={@ORM\Index(name="contrainte1", columns={"idHackat"})})
+ * @ORM\Table(name="evenement", indexes={@ORM\Index(name="crtx", columns={"idHackat"})})
  * @ORM\Entity
  */
 class Evenement
@@ -58,6 +57,34 @@ class Evenement
     private $sallee;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="Type", type="string", length=128, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var int|null
+     *
+     * @ORM\Column(name="nbParticipants", type="integer", nullable=true)
+     */
+    private $nbparticipants;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="themeE", type="string", length=128, nullable=true)
+     */
+    private $themee;
+
+    /**
+     * @var string|null
+     *
+     * @ORM\Column(name="intervenant", type="string", length=128, nullable=true)
+     */
+    private $intervenant;
+
+    /**
      * @var Hackathon
      *
      * @ORM\ManyToOne(targetEntity="Hackathon")
@@ -66,7 +93,6 @@ class Evenement
      * })
      */
     private $idhackat;
-
 
     public function getIdevent(): ?int
     {
@@ -133,7 +159,54 @@ class Evenement
         return $this;
     }
 
-    
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getNbparticipants(): ?int
+    {
+        return $this->nbparticipants;
+    }
+
+    public function setNbparticipants(?int $nbparticipants): self
+    {
+        $this->nbparticipants = $nbparticipants;
+
+        return $this;
+    }
+
+    public function getThemee(): ?string
+    {
+        return $this->themee;
+    }
+
+    public function setThemee(?string $themee): self
+    {
+        $this->themee = $themee;
+
+        return $this;
+    }
+
+    public function getIntervenant(): ?string
+    {
+        return $this->intervenant;
+    }
+
+    public function setIntervenant(?string $intervenant): self
+    {
+        $this->intervenant = $intervenant;
+
+        return $this;
+    }
+
     public function getIdhackat(): ?Hackathon
     {
         return $this->idhackat;

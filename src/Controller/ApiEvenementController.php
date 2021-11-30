@@ -16,6 +16,7 @@ class ApiEvenementController extends AbstractController
     public function index(): JsonResponse
     {
         $repository=$this->getDoctrine()->getRepository(Evenement::class);
+
         $lesEvenements= $repository->findAll();
         $tabJSON=[];
         foreach ($lesEvenements as $unEvenement){
@@ -26,8 +27,11 @@ class ApiEvenementController extends AbstractController
                 'heureE'=>$unEvenement->getHeuree(),
                 'dureeE'=>$unEvenement->getDureee(),
                 'salleE'=>$unEvenement->getSallee(),
-                'idHackat'=>$unEvenement->getIdhackat()->getIdH()
-                
+                'idHackat'=>$unEvenement->getIdhackat()->getIdH(),
+                'type'=>$unEvenement->getType(),
+                'nbParticipants'=>$unEvenement->getNbparticipants(),
+                'themeE'=>$unEvenement->getThemeE(),
+                'intervenant'=>$unEvenement->getIntervenant()
                 
             ];
         }

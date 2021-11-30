@@ -47,4 +47,14 @@ class EvenementRepository extends ServiceEntityRepository
         ;
     }
     */
+    // public function findByInitiation()
+    // {
+    //     return $this->select('e')
+    //     ->from('evenement', 'e')
+    //     ->where('e.type = "initiation"')
+    //     ->getQuery()
+    //     ->getResult()
+    // ;
+    // }
+    
 }
