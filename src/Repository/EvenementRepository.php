@@ -48,12 +48,22 @@ class EvenementRepository extends ServiceEntityRepository
     }
     */
    
-    
+    // select * from evenement where idHackat=2
+    public function findByIdhackat($idhackat){
+        return $this->createQueryBuilder('h')
+        ->andWhere('h.idHackat = :idHackat')
+        ->setParameter('idHackat', $idhackat)
+        ->getQuery()
+        
+        ->getResult()
+    ;
+    }
     public function findByType($type)
     {
         return $this->createQueryBuilder('e')
         ->andWhere('e.type = :type')
         ->setParameter('type', $type)
+      
         ->getQuery()
         ->getResult()
     ;

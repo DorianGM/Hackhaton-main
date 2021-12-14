@@ -36,7 +36,7 @@ class Inscription
     private $texte;
 
     /**
-     * @var \Hackathon
+     * @var Hackathon
      *
      * @ORM\ManyToOne(targetEntity="Hackathon")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class Inscription
     private $idhackathon;
 
     /**
-     * @var \Participant
+     * @var Participant
      *
      * @ORM\ManyToOne(targetEntity="Participant")
      * @ORM\JoinColumns({

@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\HackathonRepository;
 
 /**
  * Hackathon
  *
  * @ORM\Table(name="hackathon")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=HackathonRepository::class)
  */
 class Hackathon
 {
