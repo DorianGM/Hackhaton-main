@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Hackathon;
+use App\Entity\Participant;
+use App\Form\InscriptionFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,7 +23,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/listhackathons", name="listHack")
      */
-    public function lesHackathons(): Response
+    public function lesHackathons(Participant $participant = null, Request $request): Response
     {
         $repository=$this->getDoctrine()->getRepository(Hackathon::class);
         $lesHackathons = $repository->parNbPlaces();
@@ -36,14 +39,16 @@ class HomeController extends AbstractController
     /**
      * @Route("/listhackathons/ville/{ville}", name="laville")
      */
-    public function triVille($ville): Response
+    public function triVille($ville, Participant $participant, Request $request): Response
     {
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
         $hackathon = $repository->parVille2($ville);
         $lesVilles = $repository->parVille();
 
+        
 
         return $this->render('home/listhackathons.html.twig', [
+            
             'hackathons' => $hackathon,
             'villes' => $lesVilles,
             

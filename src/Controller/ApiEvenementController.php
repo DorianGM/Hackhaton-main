@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Evenement;
+use App\Entity\InscriptionEvent;
 use App\Entity\Hackathon;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class ApiEvenementController extends AbstractController
 {
@@ -92,5 +95,38 @@ class ApiEvenementController extends AbstractController
             ];
         }
         return new JsonResponse($tabJSON);
+    }
+
+    /**
+     * @Route("/api/add/inscriptionevent", name="apiInscriptionEvent", methods="POST")
+     */
+    public function addInscription(Request $request)
+    {
+        // On instancie un nouvel article
+        $inscription = new InscriptionEvent();
+
+        // On décode les données envoyées
+        $donnees = json_decode($request->getContent());
+
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $Evenement=$repository->find($donnees->evenement);
+
+        // On hydrate l'objet
+        $inscription->setIdevent($Evenement);
+        $inscription->setPrenomievent($donnees->prenom);
+        $inscription->setNomievent($donnees->nom);
+        $inscription->setMailievent($donnees->mail);
+
+
+
+        // On sauvegarde en base
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($inscription);
+
+        $entityManager->flush();
+
+
+        // On retourne la confirmation
+        return new Response('ok', 200);
     }
 }

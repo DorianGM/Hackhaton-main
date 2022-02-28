@@ -91,7 +91,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @ORM\Column(name="login", type="string", length=30, nullable=true)
      */
-    private $login;
+    private $username;
 
     /**
      * @var string|null
@@ -220,12 +220,12 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUsername(): ?string
     {
-        return $this->login;
+        return $this->username;
     }
 
-    public function setUsername(?string $login): self
+    public function setUsername(?string $username): self
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
@@ -248,7 +248,7 @@ class Participant implements UserInterface, PasswordAuthenticatedUserInterface
      */ 
     public function getUserIdentifier(): string 
     { 
-        return (string) $this->login;  
+        return (string) $this->username;  
     } 
  
     public function getRoles(): array 

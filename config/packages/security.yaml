@@ -10,7 +10,7 @@ security:
         app_user_provider: 
             entity: 
                     class: App\Entity\Participant #  classe d'utilisateurs (elle peut avoir un autre nom que User) 
-                    property: login #  propriété de la classe d'utilisateurs qui joue le rôle de login  
+                    property: username #  propriété de la classe d'utilisateurs qui joue le rôle de login  
     firewalls: 
             dev: 
                 pattern: ^/(_(profiler|wdt)|css|images|js)/ 

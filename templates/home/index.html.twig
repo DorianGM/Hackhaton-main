@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'confetti.html.twig' %}
 
 {% block title %}Hello HomeController!
 {% endblock %}
@@ -17,12 +17,16 @@
 		}
 	</style>
 
+	
+
+	<script src="{{ asset('../jquery.min.js') }}"></script>
+
 	<div class="container-fluid mt-3">
 
 		<div class="row">
 			<div class="col p-3">
 				<h3>Les news des Hackathons !</h3>
-			
+
 				<div class="card" style="width: 25rem;">
 					<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top">
 					<div class="card-body">
@@ -62,10 +66,12 @@
 
 							<div class="card-body">
 								<img style="width:70%" src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80"></div>
-									<p class="card-text">Partagez-nous votre ressenti et vos demandes à cette adresse mail :</p>
-									<p class="card-text">directeur@hackathon.com</p>
-								</div>
-							</div>
+							<p class="card-text">Partagez-nous votre ressenti et vos demandes à cette adresse mail :</p>
+							<p class="card-text">directeur@hackathon.com</p>
 						</div>
 					</div>
-				{% endblock %}
+				</div>
+			</div>
+
+
+		{% endblock %}
