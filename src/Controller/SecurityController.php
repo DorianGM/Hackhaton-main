@@ -9,6 +9,7 @@ use App\Form\InscriptionFormType;
 use App\Form\InscriptionHackatFormType;
 use DateTime;
 use DateTimeZone;
+use SebastianBergmann\Environment\Console;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -78,15 +79,20 @@ class SecurityController extends AbstractController
         $form =$this->createForm(InscriptionHackatFormType::class, $inscription);
         $form->handleRequest($request);
         
-
-
         if($form->isSubmitted() && $form->isValid()){
         $datetime = new DateTime('now');
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
-        $inscription->setIdhackathon($repository->find($idHackat));
+        $hackathon = $repository->find($idHackat);
+
+        $inscription->setIdhackathon($hackathon);
+        $nbplaces = $hackathon->getNbplaces();
+        $hackathon->setNbplaces($nbplaces-1);
+
         $inscription->setDateinscription($datetime);
         $inscription->setIdparticipant($this->getUser());
+
         $entityManager->persist($inscription);
+        $entityManager->persist($hackathon); // persist de l'objet hackathon 
         $entityManager->flush();    
 
         return $this->redirectToRoute('home');

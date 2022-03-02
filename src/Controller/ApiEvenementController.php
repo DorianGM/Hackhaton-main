@@ -111,19 +111,21 @@ class ApiEvenementController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
         $Evenement=$repository->find($donnees->evenement);
 
-        // On hydrate l'objet
+        // On hydrate l'objet 
         $inscription->setIdevent($Evenement);
         $inscription->setPrenomievent($donnees->prenom);
         $inscription->setNomievent($donnees->nom);
         $inscription->setMailievent($donnees->mail);
+        $Evenement->setNbparticipants($Evenement->getNbParticipants()-1);
 
 
-
+        if()
         // On sauvegarde en base
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($inscription);
+        $entityManager->persist($Evenement);
 
-        $entityManager->flush();
+        $entityManager->flush();     
 
 
         // On retourne la confirmation
