@@ -39,7 +39,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/listhackathons/ville/{ville}", name="laville")
      */
-    public function triVille($ville, Participant $participant, Request $request): Response
+    public function triVille($ville): Response
     {
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
         $hackathon = $repository->parVille2($ville);

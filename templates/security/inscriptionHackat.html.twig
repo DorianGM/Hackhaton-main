@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %} 
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %} 
+<style>
+.block{
+    display: block;
+    width:100%;
+    border:none;
+    background-color: #39ace7;
+    color: white;
+    text-align: center;
+}</style>
+{{form_start(form)}}
+Texte libre :{{form_widget(form.texte, {'attr': {'placeholder':"Présenter une compétence ou un outil qui répond au thème du hackathon"}})}} </br>
+<center><button class="block" type="submit">S'inscrire au hackathon</button> </center>
+{{ form_end(form) }}
+
+
+
+
+{% endblock %}

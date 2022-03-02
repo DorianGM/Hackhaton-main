@@ -21,12 +21,13 @@ class Inscription
      */
     private $idi;
 
-    /**
-     * @var \DateTime
+   /**
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="dateInscription", type="date", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     * @ORM\Column(name="dateInscription", type="date", nullable=true)
      */
-    private $dateinscription = 'CURRENT_TIMESTAMP';
+    private $dateinscription;
+
 
     /**
      * @var string
@@ -60,12 +61,12 @@ class Inscription
         return $this->idi;
     }
 
-    public function getDateinscription(): ?\DateTimeInterface
+   public function getDateinscription(): ?\DateTimeInterface
     {
         return $this->dateinscription;
     }
 
-    public function setDateinscription(\DateTimeInterface $dateinscription): self
+    public function setDateinscription(?\DateTimeInterface $dateinscription): self
     {
         $this->dateinscription = $dateinscription;
 

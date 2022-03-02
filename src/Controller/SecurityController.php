@@ -1,16 +1,20 @@
 <?php 
-namespace App\Controller; 
+namespace App\Controller;
 
+use App\Entity\Inscription;
+use App\Entity\Hackathon;
 use App\Entity\Users;
 use App\Entity\Participant;
 use App\Form\InscriptionFormType;
+use App\Form\InscriptionHackatFormType;
+use DateTime;
+use DateTimeZone;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-
-
+use Symfony\Component\Validator\Constraints\Date;
 
 class SecurityController extends AbstractController 
 { 
@@ -22,7 +26,7 @@ class SecurityController extends AbstractController
         //$repository = $this->getDoctrine()->getRepository(Users::Class);
         //$lesUsers = $repository->findAll();
         $lastUsername=$authenticationUtils->getLastUsername();$errors=$authenticationUtils->getLastAuthenticationError();
-        dump($lastUsername);
+        
         return $this->render('security/login.html.twig',[
             'lastUsername'=>$lastUsername,'errors'=>$errors
         ]);
@@ -59,6 +63,37 @@ class SecurityController extends AbstractController
         }
         return $this->render('security/inscription.html.twig', [
             'form' => $form->createView(),
+        ]);
+        
+    } 
+
+        /** 
+     * @Route("/inscriptionHackat/{idHackat}", name="security_inscriptionHackat") 
+     */ 
+    public function inscriptionHackat(Request $request, Hackathon $idHackat): Response
+    { 
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $inscription = new Inscription();
+        $form =$this->createForm(InscriptionHackatFormType::class, $inscription);
+        $form->handleRequest($request);
+        
+
+
+        if($form->isSubmitted() && $form->isValid()){
+        $datetime = new DateTime('now');
+        $repository = $this->getDoctrine()->getRepository(Hackathon::class);
+        $inscription->setIdhackathon($repository->find($idHackat));
+        $inscription->setDateinscription($datetime);
+        $inscription->setIdparticipant($this->getUser());
+        $entityManager->persist($inscription);
+        $entityManager->flush();    
+
+        return $this->redirectToRoute('home');
+        }
+        return $this->render('security/inscriptionHackat.html.twig', [
+            'form' => $form->createView(),
+
         ]);
         
     } 

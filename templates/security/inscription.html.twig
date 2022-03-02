@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %} 
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %} 
+<style>
+.block{
+    display: block;
+    width:100%;
+    border:none;
+    background-color: #39ace7;
+    color: white;
+    text-align: center;
+}</style>
+{{form_start(form)}}
+Votre nom :{{form_widget(form.nom, {'attr': {'placeholder':"Nom"}})}} </br>
+Votre prénom :{{form_widget(form.prenom, {'attr': {'placeholder':"Prénom"}})}}</br>
+Votre date de naissance :{{form_widget(form.datenaiss, {'attr': {'placeholder':"Date de naissance"}})}}</br>
+Votre adresse :{{form_widget(form.rue, {'attr': {'placeholder':"Rue"}})}}</br>
+Votre code postal :{{form_widget(form.cp, {'attr': {'placeholder':"Code postal"}})}}</br>
+Votre ville :{{form_widget(form.ville, {'attr': {'placeholder':"Ville"}})}}</br>
+Votre adresse mail :{{form_widget(form.mail, {'attr': {'placeholder':"Adresse mail"}})}}</br>
+Votre numéro de téléphone :{{form_widget(form.numtel, {'attr': {'placeholder':"Numéro de téléphone"}})}}</br>
+Votre portfolio :{{form_widget(form.portfolio, {'attr': {'placeholder':"Lien vers votre portfolio"}})}}</br>
+Votre login :{{form_widget(form.username, {'attr': {'placeholder':"Login"}})}}</br>
+Votre mot de passe :{{form_widget(form.password, {'attr': {'placeholder':"Mot de passe"}})}}</br>
+<button class="block" type="submit">S'inscrire</button>
+{{ form_end(form) }}
+
+
+
+
+{% endblock %}

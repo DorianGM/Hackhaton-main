@@ -1,20 +1,25 @@
 {% extends 'base.html.twig' %} 
+
 {% block body %} 
 {% if errors %}
     <div class="alert alert-danger">
     {{errors.messageKey|trans(errors.messageData, 'security')}}</div>
     {% endif %}
 
-        
+    
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Connexion </h2>
 
-    <form action="{{ path('security_login') }}" method="post"> 
-        <label for="login">Identifiant :</label> 
-        <input type="text" id="login" name="_username" /> 
- 
-        <label for="password">Mot de passe :</label> 
-        <input type="password" id="mdphash" name="_password"/> 
- 
-        <button type="submit">Se connecter</button> 
-    </form> 
+    <!-- Login Form -->
+    <form action="{{ path('security_login') }}" method="post">
+      <input type="text" id="login" class="fadeIn second" name="_username" placeholder="Identifiant">
+      <input type="password" id="mdphash" class="fadeIn third" name="_password" placeholder="Mot de passe">
+      <input type="submit" class="fadeIn fourth" value="Se connecter">
+    </form>
+
+  </div>
+</div>
     
 {% endblock %}
