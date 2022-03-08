@@ -19,25 +19,25 @@ class ApiEvenementController extends AbstractController
      */
     public function index(): JsonResponse
     {
-        $repository=$this->getDoctrine()->getRepository(Hackathon::class);
-        $lesEvenements= $repository->findAll();
-        $tabJSON=[];
-        foreach ($lesEvenements as $unEvenement){
+        $repository = $this->getDoctrine()->getRepository(Hackathon::class);
+        $lesEvenements = $repository->findAll();
+        $tabJSON = [];
+        foreach ($lesEvenements as $unEvenement) {
             $tabJSON[] = [
-                'idH'=>$unEvenement->getIdH(),
-                'dateDebut'=>$unEvenement->getDateDebut(),
-                'heureDebut'=>$unEvenement->getHeureDebut(),
-                'dateFin'=>$unEvenement->getDateFin(),
-                'heureFin'=>$unEvenement->getHeureFin(),
-                'lieu'=>$unEvenement->getLieu(),
-                'rue'=>$unEvenement->getRue(),
-                'ville'=>$unEvenement->getVille(),
-                'codePostal'=>$unEvenement->getCodePostal(),
-                'theme'=>$unEvenement->getTheme(),
-                'dateLimite'=>$unEvenement->getDateLimite(),
-                'nbPlaces'=>$unEvenement->getNbPlaces(),
-                'image'=>$unEvenement->getImage()
-                
+                'idH' => $unEvenement->getIdH(),
+                'dateDebut' => $unEvenement->getDateDebut(),
+                'heureDebut' => $unEvenement->getHeureDebut(),
+                'dateFin' => $unEvenement->getDateFin(),
+                'heureFin' => $unEvenement->getHeureFin(),
+                'lieu' => $unEvenement->getLieu(),
+                'rue' => $unEvenement->getRue(),
+                'ville' => $unEvenement->getVille(),
+                'codePostal' => $unEvenement->getCodePostal(),
+                'theme' => $unEvenement->getTheme(),
+                'dateLimite' => $unEvenement->getDateLimite(),
+                'nbPlaces' => $unEvenement->getNbPlaces(),
+                'image' => $unEvenement->getImage()
+
             ];
         }
         return new JsonResponse($tabJSON);
@@ -48,23 +48,23 @@ class ApiEvenementController extends AbstractController
      */
     public function index2($type): JsonResponse
     {
-        $repository=$this->getDoctrine()->getRepository(Evenement::class);
-        $lesEvenements= $repository->findByType($type);
-        $tabJSON=[];
-        foreach ($lesEvenements as $unEvenement){
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $lesEvenements = $repository->findByType($type);
+        $tabJSON = [];
+        foreach ($lesEvenements as $unEvenement) {
             $tabJSON[] = [
-                'idEvent'=>$unEvenement->getIdevent(),
-                'libelleE'=>$unEvenement->getLibellee(),
-                'dateE'=>$unEvenement->getDatee(),
-                'heureE'=>$unEvenement->getHeuree(),
-                'dureeE'=>$unEvenement->getDureee(),
-                'salleE'=>$unEvenement->getSallee(),
-                'idHackat'=>$unEvenement->getIdhackat()->getIdH(),
-                'type'=>$unEvenement->getType(),
-                'nbParticipants'=>$unEvenement->getNbparticipants(),
-                'themeE'=>$unEvenement->getThemeE(),
-                'intervenant'=>$unEvenement->getIntervenant()
-                
+                'idEvent' => $unEvenement->getIdevent(),
+                'libelleE' => $unEvenement->getLibellee(),
+                'dateE' => $unEvenement->getDatee(),
+                'heureE' => $unEvenement->getHeuree(),
+                'dureeE' => $unEvenement->getDureee(),
+                'salleE' => $unEvenement->getSallee(),
+                'idHackat' => $unEvenement->getIdhackat()->getIdH(),
+                'type' => $unEvenement->getType(),
+                'nbParticipants' => $unEvenement->getNbparticipants(),
+                'themeE' => $unEvenement->getThemeE(),
+                'intervenant' => $unEvenement->getIntervenant()
+
             ];
         }
         return new JsonResponse($tabJSON);
@@ -75,23 +75,23 @@ class ApiEvenementController extends AbstractController
      */
     public function index3($idhackat): JsonResponse
     {
-        $repository=$this->getDoctrine()->getRepository(Evenement::class);
-        $lesEvenements= $repository->findByIdhackat($idhackat);
-        $tabJSON=[];
-        foreach ($lesEvenements as $unEvenement){
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $lesEvenements = $repository->findByIdhackat($idhackat);
+        $tabJSON = [];
+        foreach ($lesEvenements as $unEvenement) {
             $tabJSON[] = [
-                'idEvent'=>$unEvenement->getIdevent(),
-                'libelleE'=>$unEvenement->getLibellee(),
-                'dateE'=>$unEvenement->getDatee(),
-                'heureE'=>$unEvenement->getHeuree(),
-                'dureeE'=>$unEvenement->getDureee(),
-                'salleE'=>$unEvenement->getSallee(),
-                'idHackat'=>$unEvenement->getIdhackat()->getIdH(),
-                'type'=>$unEvenement->getType(),
-                'nbParticipants'=>$unEvenement->getNbparticipants(),
-                'themeE'=>$unEvenement->getThemeE(),
-                'intervenant'=>$unEvenement->getIntervenant()
-                
+                'idEvent' => $unEvenement->getIdevent(),
+                'libelleE' => $unEvenement->getLibellee(),
+                'dateE' => $unEvenement->getDatee(),
+                'heureE' => $unEvenement->getHeuree(),
+                'dureeE' => $unEvenement->getDureee(),
+                'salleE' => $unEvenement->getSallee(),
+                'idHackat' => $unEvenement->getIdhackat()->getIdH(),
+                'type' => $unEvenement->getType(),
+                'nbParticipants' => $unEvenement->getNbparticipants(),
+                'themeE' => $unEvenement->getThemeE(),
+                'intervenant' => $unEvenement->getIntervenant()
+
             ];
         }
         return new JsonResponse($tabJSON);
@@ -109,26 +109,49 @@ class ApiEvenementController extends AbstractController
         $donnees = json_decode($request->getContent());
 
         $repository = $this->getDoctrine()->getRepository(Evenement::class);
-        $Evenement=$repository->find($donnees->evenement);
+        $Evenement = $repository->find($donnees->evenement);
 
         // On hydrate l'objet 
         $inscription->setIdevent($Evenement);
         $inscription->setPrenomievent($donnees->prenom);
         $inscription->setNomievent($donnees->nom);
         $inscription->setMailievent($donnees->mail);
-        $Evenement->setNbparticipants($Evenement->getNbParticipants()-1);
+        $Evenement->setNbparticipants($Evenement->getNbParticipants() - 1);
 
-
-        if()
-        // On sauvegarde en base
+        
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($inscription);
         $entityManager->persist($Evenement);
+        $entityManager->flush();
 
-        $entityManager->flush();     
+            
+        return new Response('ok', 200);
+    }
 
+    /**
+     * @Route("/api/add/inscriptionevent/getInscription", name="apiInscriptionEventCheck", methods="GET")
+     */
+    public function checkInscription(Request $request)
+    {
+        // On instancie un nouvel article
+        $inscription = new InscriptionEvent();
 
-        // On retourne la confirmation
+        // On décode les données envoyées
+        $donnees = json_decode($request->getContent());
+
+        $repository = $this->getDoctrine()->getRepository(Evenement::class);
+        $Evenement = $repository->find($donnees->evenement);
+
+        // On hydrate l'objet 
+        $inscription->getIdevent($Evenement);
+        $inscription->getMailievent($donnees->mail);    
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($inscription);
+        $entityManager->persist($Evenement);
+        $entityManager->flush();
+         
+        
         return new Response('ok', 200);
     }
 }

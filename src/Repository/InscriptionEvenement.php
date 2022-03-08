@@ -19,6 +19,20 @@ class InscriptionEventRepository extends ServiceEntityRepository
         parent::__construct($registry, InscriptionEvent::class);
     }
 
+    
+    public function checkInscription($mail, $idievent)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('i.mail = :mail')
+            ->andWhere('i.idievent = :idievent')
+            ->setParameter('mail', $mail)
+            ->setParameter('idievent', $idievent)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    
+
     // /**
     //  * @return Inscription[] Returns an array of Inscription objects
     //  */

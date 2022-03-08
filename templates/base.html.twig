@@ -55,9 +55,11 @@
 
 					</ul>
 					<form class="d-flex">
+						
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 							<a class="btn btn-danger" href="{{ path('security_logout') }}">Se déconnecter</a>
 						{% else %}
+						<a class="btn btn-success" href="{{ path('security_inscription') }}">S'inscrire</a> 
 							<a class="btn btn-primary" href="{{ path('security_login') }}">Se connecter</a>
 						{% endif %}
 
