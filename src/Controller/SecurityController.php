@@ -26,7 +26,8 @@ class SecurityController extends AbstractController
     { 
         //$repository = $this->getDoctrine()->getRepository(Users::Class);
         //$lesUsers = $repository->findAll();
-        $lastUsername=$authenticationUtils->getLastUsername();$errors=$authenticationUtils->getLastAuthenticationError();
+        $lastUsername=$authenticationUtils->getLastUsername();
+        $errors=$authenticationUtils->getLastAuthenticationError();
         
         return $this->render('security/login.html.twig',[
             'lastUsername'=>$lastUsername,'errors'=>$errors

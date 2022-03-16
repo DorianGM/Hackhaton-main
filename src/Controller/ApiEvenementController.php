@@ -128,30 +128,30 @@ class ApiEvenementController extends AbstractController
         return new Response('ok', 200);
     }
 
-    /**
-     * @Route("/api/add/inscriptionevent/getInscription", name="apiInscriptionEventCheck", methods="GET")
-     */
-    public function checkInscription(Request $request)
-    {
-        // On instancie un nouvel article
-        $inscription = new InscriptionEvent();
+    // /**
+    //  * @Route("/api/add/inscriptionevent/getInscription", name="apiInscriptionEventCheck", methods="GET")
+    //  */
+    // public function checkInscription(Request $request)
+    // {
+    //     // On instancie un nouvel article
+    //     $inscription = new InscriptionEvent();
 
-        // On décode les données envoyées
-        $donnees = json_decode($request->getContent());
+    //     // On décode les données envoyées
+    //     $donnees = json_decode($request->getContent());
+    //     dump($donnees);
+    //     $repository = $this->getDoctrine()->getRepository(Evenement::class);
+    //     $Evenement = $repository->find($donnees->evenement);
 
-        $repository = $this->getDoctrine()->getRepository(Evenement::class);
-        $Evenement = $repository->find($donnees->evenement);
+    //     // On hydrate l'objet 
+    //     $inscription->getIdevent($Evenement);
+    //     $inscription->getMailievent($donnees->mail);    
 
-        // On hydrate l'objet 
-        $inscription->getIdevent($Evenement);
-        $inscription->getMailievent($donnees->mail);    
-
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($inscription);
-        $entityManager->persist($Evenement);
-        $entityManager->flush();
+    //     $entityManager = $this->getDoctrine()->getManager();
+    //     $entityManager->persist($inscription);
+    //     $entityManager->persist($Evenement);
+    //     $entityManager->flush();
          
         
-        return new Response('ok', 200);
-    }
+    //     return new Response('ok', 200);
+    // }
 }
