@@ -51,9 +51,11 @@
 						<li class="nav-item">
 							<a class="nav-link active" aria-current="page" href="{{path('listHack')}}">Les Hackathons</a>
 						</li>
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 						<li class="nav-item">
-							<a class="nav-link active" href="#">À propos des hackathons</a>
+							<a class="nav-link active" href="{{path('favoris',{'idP':app.user.idp})}}">Favoris</a>
 						</li>
+						{% endif %}
 
 					</ul>
 					<form class="d-flex">

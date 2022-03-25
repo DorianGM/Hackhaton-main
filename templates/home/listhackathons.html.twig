@@ -32,7 +32,9 @@
 								{% endif %}
 						{% endif %}
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						
 							<a class="btn btn-outline-primary" href="{{path('security_inscriptionHackat',{'idHackat':hackathon.idH})}}">Inscription au hackathon</a>
+							<a class="btn btn-outline-danger" href="{{path('favoris',{'idP':hackathon.idH})}}">⭐</a>
 						{% else %}
 							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">
