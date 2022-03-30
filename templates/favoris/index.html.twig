@@ -5,8 +5,8 @@
 
 {% block body %}
 
-	<h1>Mes Favoris
-	</h1>
+	<center><h1>Mon Tableau de Bord
+	</h1></center>
 
 
 	<div class="card">
@@ -15,14 +15,25 @@
 		</div>
 		<div class="card-body">
 			<blockquote class="blockquote mb-0">
-				<p></p>
-				<footer class="blockquote-footer">{{idP.prenom}}
-				</footer>
+				<p>
+		Nom : {{app.user.nom}}</br>
+		Prénom : {{app.user.prenom}}</br>
+		Date de naissance : {{app.user.dateNaiss|date("d/m/Y")}}</br>
+      	Adresse : {{app.user.rue}}, {{app.user.cp}} {{app.user.ville}}</br>
+		Mail : {{app.user.mail}}</br>
+		Numéro de téléphone : {{app.user.numTel}}</br>
+		Adresse de portfolio : {{app.user.portfolio}}</br>
+</div></p>
 			</blockquote>
 		</div>
 	</div>
-	<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top :2%">
 
+	<div class="card">
+		<div class="card-header">
+			Mes favoris
+		</div>
+		<div class="card-body">
+				<p>	<div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top :2%">
 
 		{% for fav in favs %}
 
@@ -37,10 +48,17 @@
 						</h4>
 						<h4 class="card-text">{{fav.idHackatFav.codePostal}}
 							{{fav.idHackatFav.ville}}</h4>
+							<form action="{{path('deleteFav', {'idP':app.user.idp, 'idF':fav.idF})}}" method="POST" onSubmit="return(confirm('Voulez-vous vraiment supprimer cette série ?'))">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="submit" class="btn btn-outline-danger" value="Supprimer">
+							</form>
 					</div>
 				</div>
 			</div>
 		{% endfor %}
+	</div></p>
+		</div>
 	</div>
+
 
 {% endblock %}

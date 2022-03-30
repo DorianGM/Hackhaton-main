@@ -2,10 +2,13 @@
 
 namespace App\Repository;
 
+use App\Entity\Favoris;
 use App\Entity\Hackathon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Component\Validator\Constraints\All;
+use mysqli;
 
 /**
  * @method Hackathon|null find($id, $lockMode = null, $lockVersion = null)
@@ -77,6 +80,10 @@ class HackathonRepository extends ServiceEntityRepository
         ->getResult()
     ;
  }
+
+
+
+    
 
 
     // public function parType(){

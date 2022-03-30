@@ -13,7 +13,6 @@
 			</ul>
 		</div>
 	</div>
-
 	<div class="row row-cols-1 row-cols-md-3 g-4">
 
 		{% for hackathon in hackathons %}
@@ -32,9 +31,18 @@
 								{% endif %}
 						{% endif %}
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+							<a class="btn btn-outline-primary" href="{{path('security_inscriptionHackat',{'idHackat':hackathon.idH})}}">Inscription au hackathon</a>						
+							
+								{# {% for unFav in favs %} #}
+								{# {% if hackathon.idH == unFav.idHackatFav.idH %} #}
+								
+								<a class="btn btn-outline-danger" href="{{path('favoris',{'idP':app.user.idp})}}">⭐</a>
+							
+							{# {% else %}
+							
+							{% endif %} #}
+							{# {% endfor %} #}
 						
-							<a class="btn btn-outline-primary" href="{{path('security_inscriptionHackat',{'idHackat':hackathon.idH})}}">Inscription au hackathon</a>
-							<a class="btn btn-outline-danger" href="{{path('favoris',{'idP':hackathon.idH})}}">⭐</a>
 						{% else %}
 							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">
@@ -59,5 +67,6 @@
 				</div>
 			</div>
 		{% endfor %}
+
 	</div>
 </div>{% endblock %}
