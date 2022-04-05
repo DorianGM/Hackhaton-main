@@ -26,7 +26,7 @@
 						<a href="{{path('details',{'id':hackathon.idH})}}" class="btn btn-outline-success">Détails</a>
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 							{% else %}
-								{% if hackathon.nbPlaces > 0 %}
+								{% if hackathon.nbPlaces > 0 and hackathon.dateLimite < "2020-02-12" %}
 									<a class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">S'inscrire</a>
 								{% endif %}
 						{% endif %}
@@ -36,7 +36,7 @@
 								{# {% for unFav in favs %} #}
 								{# {% if hackathon.idH == unFav.idHackatFav.idH %} #}
 								
-								<a class="btn btn-outline-danger" href="{{path('favoris',{'idP':app.user.idp})}}">⭐</a>
+								<a class="btn btn-outline-danger" href="{{path('addFav',{'idH':hackathon.idH})}}">⭐</a>
 							
 							{# {% else %}
 							

@@ -61,6 +61,7 @@
 						
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 						<h5>Bonjour {{ app.user.prenom }}</h5>
+						
 							<a class="btn btn-danger" href="{{ path('security_logout') }}">Se déconnecter</a>
 						{% else %}
 						<a class="btn btn-success" href="{{ path('security_inscription') }}">S'inscrire</a> 
