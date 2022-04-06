@@ -30,6 +30,8 @@ class ApiController extends AbstractController
                 'rue'=>$unHackathon->getRue(),
                 'ville'=>$unHackathon->getVille(),
                 'cp'=>$unHackathon->getCodepostal(),
+                'latitude'=>$unHackathon->getLatitude(),
+                'longitude'=>$unHackathon->getLongitude(),
                 'theme'=>$unHackathon->getTheme(),
                 'dateLimite'=>$unHackathon->getDatelimite(),
                 'nbPlaces'=>$unHackathon->getNbplaces(),

@@ -99,6 +99,20 @@ class Hackathon
      */
     private $nbplaces;
 
+        /**
+     * @var float
+     *
+     * @ORM\Column(name="latitude", type="float", nullable=false)
+     */
+    private $latitude;
+
+        /**
+     * @var float
+     *
+     * @ORM\Column(name="longitude", type="float", nullable=false)
+     */
+    private $longitude;
+
     /**
      * @var string
      *
@@ -256,4 +270,52 @@ class Hackathon
     }
 
 
+
+    /**
+     * Get the value of latitude
+     *
+     * @return  float
+     */ 
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set the value of latitude
+     *
+     * @param  float  $latitude
+     *
+     * @return  self
+     */ 
+    public function setLatitude(float $latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of longitude
+     *
+     * @return  float
+     */ 
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set the value of longitude
+     *
+     * @param  float  $longitude
+     *
+     * @return  self
+     */ 
+    public function setLongitude(float $longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
 }
