@@ -14,18 +14,22 @@ Pour installer composer, il suffit de se rendre sur le site de [Composer](https:
 
 ```bash
 git clone https://github.com/DorianGM/Hackhaton-main.git
+```
 
 >Une fois dans le projet, exécutez la commande suivante dans votre terminal :
 
 ```bash
 composer install
+```
 
 >Puis :
 
 ```bash
 composer update
+```
 
 >Puis pour lancer l'application web, dans votre terminal lancer la commande suivante :
 
 ```bash
 symfony serve
+
