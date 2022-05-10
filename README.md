@@ -1,5 +1,8 @@
 ## Hackat-Web
 ### Installations préalables :
+
+Avoir la version de PHP 7.3.21 (cli)
+
 #### Installation de Symfony
 
 Pour installer symfony, il suffit de se rendre sur le site de [Symfony](https://symfony.com/download)
