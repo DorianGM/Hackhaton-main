@@ -48,7 +48,7 @@
 						</h4>
 						<h4 class="card-text">{{fav.idHackatFav.codePostal}}
 							{{fav.idHackatFav.ville}}</h4>
-							<form action="{{path('deleteFav', {'idP':app.user.idp, 'idF':fav.idF})}}" method="POST" onSubmit="return(confirm('Voulez-vous vraiment supprimer cette série ?'))">
+							<form action="{{path('deleteFav', {'idP':app.user.idp, 'idF':fav.idF})}}" method="POST" onSubmit="return(confirm('Voulez-vous vraiment supprimer ce favori ?'))">
 								<input type="hidden" name="_method" value="DELETE">
 								<input type="submit" class="btn btn-outline-danger" value="Supprimer">
 							</form>

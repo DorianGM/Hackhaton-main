@@ -10,10 +10,11 @@
 				           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
-		
-			<link rel="stylesheet" href="{{ asset('./css/pageLogin.css') }}" />
+			
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-		{% endblock %}
+		
+		
+			{% endblock %}
 		<style>
 			.hackathon {
 				width: 25%;
@@ -56,7 +57,7 @@
 						{% endif %}
 
 					</ul>
-					<form class="d-flex">
+					<form class="d-fluid">
 					
 						
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}

@@ -52,12 +52,13 @@ class HackathonRepository extends ServiceEntityRepository
     }
     */
 
-    public function parVille(){
+    public function parVille($ajd){
         return $this->createQueryBuilder('h')
         ->select('DISTINCT h.ville')
         ->orderBy('h.ville', 'ASC')
+        ->setParameter('ajd', $ajd)
+        ->andWhere('h.datelimite > :ajd')
         ->getQuery()
-        
         ->getResult()
     ;
 }

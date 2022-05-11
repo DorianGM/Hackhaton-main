@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Favoris;
+use DateTime;
 
 class HomeController extends AbstractController
 {
@@ -28,10 +29,13 @@ class HomeController extends AbstractController
     {
         $repository=$this->getDoctrine()->getRepository(Hackathon::class);
         $lesHackathons = $repository->parNbPlaces();
-        $lesVilles = $repository->parVille();
+        $ajd = new DateTime('now');
+        $lesVilles = $repository->parVille($ajd);
+       
     
 
         return $this->render('home/listhackathons.html.twig', [
+            'ajd' => $ajd,
             'hackathons' => $lesHackathons,
             'villes' => $lesVilles,
         ]);
@@ -44,12 +48,14 @@ class HomeController extends AbstractController
     {
         $repository = $this->getDoctrine()->getRepository(Hackathon::class);
         $hackathon = $repository->parVille2($ville);
-        $lesVilles = $repository->parVille();
+        $ajd = new DateTime('now');
+        $lesVilles = $repository->parVille($ajd);
+        $ajd = new DateTime('now');
 
         
 
         return $this->render('home/listhackathons.html.twig', [
-            
+            'ajd' => $ajd,
             'hackathons' => $hackathon,
             'villes' => $lesVilles,
             

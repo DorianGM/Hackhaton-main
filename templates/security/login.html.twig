@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %} 
 
 {% block body %} 
+{% block stylesheets %}
+			{#{{ encore_entry_link_tags('app') }}#}
+		<link rel="stylesheet" href="{{ asset('./css/pageLogin.css') }}" />
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		
+			{% endblock %}
+
+
 {% if errors %}
     <div class="alert alert-danger">
     {{errors.messageKey|trans(errors.messageData, 'security')}}</div>

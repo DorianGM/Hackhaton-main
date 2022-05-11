@@ -1,4 +1,13 @@
 {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('./css/cardImage.css') }}" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		
+{% endblock %}
+
+
 {% block body %}
 
 	<div class="container">
@@ -17,21 +26,24 @@
 
 		{% for hackathon in hackathons %}
 
-
+{% if  hackathon.dateLimite > ajd %}
 			<div class="col">
 				<div class="card" style="width: 35rem;">
-					<img src="{{hackathon.image}}" class="card-img-top">
+				
+					<img src="{{hackathon.image}}" class="card-img-top" >
 					<div class="card-body">
 						<h5 class="card-title">{{hackathon.theme}}</h5>
 						<a href="{{path('details',{'id':hackathon.idH})}}" class="btn btn-outline-success">Détails</a>
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 							{% else %}
-								{% if hackathon.nbPlaces > 0 and hackathon.dateLimite < "2020-02-12" %}
+								{% if hackathon.nbPlaces > 0 %}
 									<a class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">S'inscrire</a>
 								{% endif %}
 						{% endif %}
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-							<a class="btn btn-outline-primary" href="{{path('security_inscriptionHackat',{'idHackat':hackathon.idH})}}">Inscription au hackathon</a>						
+						{% if hackathon.nbPlaces > 0 %}
+							<a class="btn btn-outline-primary" href="{{path('security_inscriptionHackat',{'idHackat':hackathon.idH})}}">Inscription au hackathon</a>	
+							{% endif %}					
 							
 								{# {% for unFav in favs %} #}
 								{# {% if hackathon.idH == unFav.idHackatFav.idH %} #}
@@ -64,8 +76,11 @@
 							</div>
 						{% endif %}
 					</div>
+					
 				</div>
+				
 			</div>
+			{% endif %}
 		{% endfor %}
 
 	</div>
