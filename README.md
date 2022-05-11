@@ -35,4 +35,7 @@ composer update
 
 ```bash
 symfony serve
+```
+
+## **⚠️ Penser à bien changer le fichier .env pour la connexion à la base de données ⚠️** 
 
