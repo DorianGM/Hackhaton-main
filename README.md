@@ -37,5 +37,5 @@ composer update
 symfony serve
 ```
 
-## **⚠️ Penser à bien changer le fichier .env pour la connexion à la base de données ⚠️** 
+## **⚠️ Penser à bien changer le fichier .env pour la connexion à la base de données ⚠️ (Pour Sovann et Pierre)** 
 
